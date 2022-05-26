@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4911677238812485843}
   - component: {fileID: 4911677238812485842}
   m_Layer: 0
-  m_Name: Buildplace 1
+  m_Name: BuildingLot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

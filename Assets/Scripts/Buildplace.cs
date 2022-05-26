@@ -26,7 +26,7 @@ public class Buildplace : MonoBehaviour
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere( transform.position, 15f );
+		Gizmos.DrawWireSphere( transform.position, 8f );
 		//Gizmos.DrawWireSphere( transform.position, 5f );
 	}
 
@@ -44,16 +44,16 @@ public class Buildplace : MonoBehaviour
 		{
 
 			case State.Oklahoma:
-				BuildTower( defaultTowerPrice );
+				BuildTower( Mathf.Floor( defaultTowerPrice ) );
 				break;
 			case State.Arkansas:
-				BuildTower( defaultTowerPrice *1.25f);
+				BuildTower( Mathf.Floor( defaultTowerPrice * 0.75f ));
 				break;
 			case State.Louisiana:
-				BuildTower( defaultTowerPrice*0.5f );
+				BuildTower( Mathf.Floor( defaultTowerPrice *0.5f) );
 				break;
 			case State.Texas:
-				BuildTower( defaultTowerPrice*2f );
+				BuildTower( Mathf.Floor( defaultTowerPrice *2f ));
 				break;
 			default:
 				BuildTower( 0f );

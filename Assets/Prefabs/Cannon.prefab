@@ -94,8 +94,8 @@ MonoBehaviour:
   muzzle: {fileID: 3122235009949479937}
   towerType: 0
   price: 50
-  damage: 50
-  reloadTime: 0.5
+  damage: 33
+  reloadTime: 2
   shootingRange: 12
 --- !u!1001 &9042552111124700429
 PrefabInstance:
