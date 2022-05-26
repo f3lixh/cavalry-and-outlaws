@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     public Transform target;
+    public float damage = 1f;
    
     void FixedUpdate()
     {
@@ -29,7 +30,7 @@ public class Projectile : MonoBehaviour
         Outlaw targetHit = other.GetComponentInChildren<Outlaw>();
         if( targetHit )
         {
-            targetHit.takeDamage( 10f );
+            targetHit.takeDamage( damage );
 
             HealthBar health = other.GetComponentInChildren<HealthBar>();
             if( health )

@@ -7,30 +7,33 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform target;
     public Transform muzzle;
-  
-    public enum TowerType { Cannon, Sniper};
+
+    public enum TowerType { Cannon, Sniper };
     public TowerType towerType;
     public float price = 50f;
+    public float damage;
 
-    public float reloadLeft = 0f;
+    float reloadTimeLeft = 0f;
 
-    float reloadTime = 2f;
+    public float reloadTime = 2f;
     public float shootingRange = 10f;
 
-	private void Start()
-	{
+    private void Start()
+    {
         //muzzle = GameObject.Find( "Muzzle" ).transform;
-	}
+    }
 
-	void Update()
+    void Update()
     {
 
         Outlaw[] outlaws = GameObject.FindObjectsOfType<Outlaw>();
         float distance = Mathf.Infinity;
 
-        foreach( Outlaw outlaw in outlaws ) {
+        foreach( Outlaw outlaw in outlaws )
+        {
             float d = Vector3.Distance( transform.position, outlaw.transform.position );
-            if( target == null || d < distance ) {
+            if( target == null || d < distance )
+            {
                 target = outlaw.transform;
                 distance = d;
             }
@@ -39,8 +42,10 @@ public class Tower : MonoBehaviour
         if( target == null )
             return;
 
-        if( towerType == TowerType.Cannon ) {
-            Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.position - transform.position;
+        if( towerType == TowerType.Cannon )
+        {
+
             Quaternion aimRotation = Quaternion.LookRotation( dir );
             Vector3 rotation = Quaternion.Lerp( transform.rotation, aimRotation, Time.deltaTime * 10f ).eulerAngles;
 
@@ -48,20 +53,24 @@ public class Tower : MonoBehaviour
         }
 
 
-        reloadLeft -= Time.deltaTime;
+        reloadTimeLeft -= Time.deltaTime;
 
-        if( reloadLeft <= 0f ) {
-            reloadLeft = reloadTime;
+        if( reloadTimeLeft <= 0f && dir.magnitude <= shootingRange )
+        {
+            reloadTimeLeft = reloadTime;
             ShootProjectile();
-        } 
+        }
 
-    
+
 
     }
 
-    void ShootProjectile()
+	
+
+	void ShootProjectile()
     {
         GameObject projectile = Instantiate( projectilePrefab, muzzle.position, muzzle.rotation );
+        projectile.GetComponent<Projectile>().damage = damage;
         projectile.GetComponent<Projectile>().target = target;
     }
 
@@ -69,27 +78,27 @@ public class Tower : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-    
-    
-       // target = collider.transform;
-        
-            
+
+
+        // target = collider.transform;
+
+
     }
 
-    IEnumerator Shoot(Transform transform) 
+    IEnumerator Shoot(Transform transform)
     {
 
-       
-            while( transform != null )
-            {
-                GameObject projectile = Instantiate( projectilePrefab, transform.position, transform.rotation );
-                projectile.GetComponent<Projectile>().target = target;
-                yield return new WaitForSeconds( 20f );
-            }
-        
-	}
-        
-    
+
+        while( transform != null )
+        {
+            GameObject projectile = Instantiate( projectilePrefab, transform.position, transform.rotation );
+            projectile.GetComponent<Projectile>().target = target;
+            yield return new WaitForSeconds( 20f );
+        }
+
+    }
+
+
 
     void OnTriggerExit(Collider collider)
     {

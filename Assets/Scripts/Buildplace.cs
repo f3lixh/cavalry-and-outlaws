@@ -23,6 +23,13 @@ public class Buildplace : MonoBehaviour
 		
 	}
 
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere( transform.position, 15f );
+		//Gizmos.DrawWireSphere( transform.position, 5f );
+	}
+
 	void Update()
 	{
 		towerPrefab = GameManager.selectedTower;
@@ -67,7 +74,7 @@ public class Buildplace : MonoBehaviour
 				return;
 			}
 			GameObject g = Instantiate( towerPrefab );
-			g.transform.position = transform.position + Vector3.up;
+			g.transform.position = transform.position;// + Vector3.up;
 			isBuild = true;
 		}
 		else
