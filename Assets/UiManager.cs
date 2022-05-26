@@ -9,6 +9,7 @@ public class UiManager : MonoBehaviour
     public static UiManager instance;
 
     public TMP_Text money;
+    public TMP_Text outlawInfo;
     
     public GameManager gm;
     // Start is called before the first frame update
@@ -20,7 +21,9 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        outlawInfo.text = OutlawSpawner.outlawsAlive + " Outlaws Alive!" + "\n" + "Current Wave: " + OutlawSpawner.currentWave + "/" + OutlawSpawner.maxWave;
         money.text = "$" + GameManager.money;
+        if( OutlawSpawner.isWon ) money.text = "YOU WON";
     }
 
     public static void ShowBankInfo(bool canAfford) 

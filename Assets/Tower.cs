@@ -12,11 +12,10 @@ public class Tower : MonoBehaviour
     public TowerType towerType;
     public float price = 50f;
     public float damage;
-
-    float reloadTimeLeft = 0f;
-
     public float reloadTime = 2f;
     public float shootingRange = 10f;
+
+    float reloadTimeLeft = 0f;
 
     private void Start()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public static float money = 200;
+    [SerializeField] public static float money = 500;
     // Start is called before the first frame update
     public static GameManager instance;
     public UiManager uiManager;

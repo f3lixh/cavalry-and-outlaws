@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buildplace : MonoBehaviour
+public class BuildingLot : MonoBehaviour
 {
     public GameObject towerPrefab;
 	public enum State { Stateless, Oklahoma, Arkansas, Louisiana, Texas  };
@@ -11,11 +11,7 @@ public class Buildplace : MonoBehaviour
 	public GameObject selectedTowerPrefab;
 
 	bool isBuild = false;
-	//public GameObject tower;
-
-
-
-
+	
 	private void OnMouseDown()
 	{
 		
@@ -25,9 +21,9 @@ public class Buildplace : MonoBehaviour
 
 	private void OnDrawGizmosSelected()
 	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere( transform.position, 8f );
-		//Gizmos.DrawWireSphere( transform.position, 5f );
+		
+		//Gizmos.DrawWireSphere( transform.position, 8f );
+		
 	}
 
 	void Update()
@@ -73,12 +69,13 @@ public class Buildplace : MonoBehaviour
 
 				return;
 			}
-			GameObject g = Instantiate( towerPrefab );
-			g.transform.position = transform.position;// + Vector3.up;
+			GameObject newTower = Instantiate( towerPrefab );
+			newTower.transform.position = transform.position;
 			isBuild = true;
 		}
 		else
 		{
+			//Money Cheat
 			GameManager.money += 50;
 		}
 	}

@@ -28,7 +28,7 @@ public class Outlaw : MonoBehaviour
             Fort fort = other.GetComponentInChildren<Fort>();
             fort.takeDamage( 2f );
 
-            HealthBar health = other.GetComponentInChildren<HealthBar>();
+            Health health = other.GetComponentInChildren<Health>();
             if( health )
             {
                 health.setHealth( fort.health );

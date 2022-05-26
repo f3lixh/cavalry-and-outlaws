@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Debug.Log( "Hit" );
             Destroy( gameObject );
             return;
         }
@@ -32,7 +31,7 @@ public class Projectile : MonoBehaviour
         {
             targetHit.takeDamage( damage );
 
-            HealthBar health = other.GetComponentInChildren<HealthBar>();
+            Health health = other.GetComponentInChildren<Health>();
             if( health )
             {
                 health.setHealth(targetHit.health);
