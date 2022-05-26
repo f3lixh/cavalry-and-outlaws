@@ -15,14 +15,7 @@ public class BuildingLot : MonoBehaviour
 	private void OnMouseDown()
 	{
 		
-		Debug.Log( "Hello There" );
-		
-	}
-
-	private void OnDrawGizmosSelected()
-	{
-		
-		//Gizmos.DrawWireSphere( transform.position, 8f );
+		//Debug.Log( "Hello There" );
 		
 	}
 

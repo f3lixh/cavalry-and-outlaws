@@ -10,6 +10,8 @@ public class UiManager : MonoBehaviour
 
     public TMP_Text money;
     public TMP_Text outlawInfo;
+    public GameObject Credits;
+    public bool isCreditsActive = false;
     
     public GameManager gm;
     // Start is called before the first frame update
@@ -24,6 +26,12 @@ public class UiManager : MonoBehaviour
         outlawInfo.text = OutlawSpawner.outlawsAlive + " Outlaws Alive!" + "\n" + "Current Wave: " + OutlawSpawner.currentWave + "/" + OutlawSpawner.maxWave;
         money.text = "$" + GameManager.money;
         if( OutlawSpawner.isWon ) money.text = "YOU WON";
+    }
+
+    public void ToggleCredits()
+    {
+        Credits.SetActive( !isCreditsActive );
+        isCreditsActive = !isCreditsActive;
     }
 
     public static void ShowBankInfo(bool canAfford) 

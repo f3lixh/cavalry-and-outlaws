@@ -38,11 +38,15 @@ public class Outlaw : MonoBehaviour
         }
     }
 
-    public void takeDamage(float damage) {
-        if(health <= damage) {
+    public void takeDamage(float damage) 
+    {
+        if(health <= damage) 
+        {
             Destroy( gameObject );
             GameManager.money += 50f;
-		} else {
+		} 
+        else 
+        {
             health -= damage;
         }
 	}
